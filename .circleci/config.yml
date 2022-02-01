@@ -1,0 +1,38 @@
+version: 2.1
+jobs:
+  build-job:
+    docker:
+      - image: node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm run build
+  deploy-job:
+    docker:
+      - image: node:latest
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - run: npm install
+      - run:
+          name: "GIT config"
+          command: |
+            git config user.email "${CIRCLE_PROJECT_USERNAME}@users.noreply.github.com"
+            git config user.name "${CIRCLE_PROJECT_USERNAME}"
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:74:02:81:3e:9e:99:d7:1d:c3:07:f8:33:fe:c3:b9"
+      - run: npm run deploy
+
+workflows:
+  version: 2
+  deploy-workflow:
+    jobs:
+      - build-job
+      - deploy-job:
+          requires:
+            - build-job
+          filters:
+            branches:
+              only: main
