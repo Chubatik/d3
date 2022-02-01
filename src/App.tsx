@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
 import {BasicChart} from "./pages/BasicChart/BasicChart";
+import {GropedBarChart} from "./pages/GroupedBarChart/GropedBarChart";
 
 export const App = () => (
     <BrowserRouter>
@@ -10,10 +11,14 @@ export const App = () => (
                 <li>
                     <Link to="/">Basic chart</Link>
                 </li>
+                <li>
+                    <Link to="/grouped-chart">Grouped bar chart</Link>
+                </li>
             </ul>
         </nav>
         <Routes>
             <Route path="/" element={<BasicChart />} />
+            <Route path="/grouped-chart" element={<GropedBarChart />} />
         </Routes>
     </BrowserRouter>
 )

@@ -2,7 +2,8 @@ import React, {useEffect, useRef, useState} from 'react';
 import {select, Selection} from 'd3-selection';
 import {scaleLinear, scaleBand} from "d3-scale";
 import {axisLeft, axisBottom} from "d3-axis";
-import {simpleDataSet, measurements, margin} from "../../data/data"
+import {simpleDataSet} from "../../data/data"
+import {margin, measurements} from "../../constants";
 
 export const BasicChart = () => {
     const ref = useRef<HTMLDivElement | null>(null)
