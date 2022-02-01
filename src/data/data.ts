@@ -7,11 +7,7 @@ export interface Value {
     keyValue: number
     brand: string
 }
-export const margin = {top: 20, right: 20, bottom: 40, left: 60}
-export const measurements = {
-    width: 460 - margin.left - margin.right,
-    height: 400 - margin.top - margin.bottom,
-}
+
 export const simpleDataSet: Value[] = [
     {
         keyValue: 25,
@@ -30,6 +26,7 @@ export const simpleDataSet: Value[] = [
         brand: 'KFC'
     }
 ]
+
 export const dataSet: Data[] = [
     {
         key: "Differentiation",
