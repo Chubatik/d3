@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import {Routes, Route, Link, HashRouter} from "react-router-dom";
 import {BasicChart} from "./pages/BasicChart/BasicChart";
 import {GropedBarChart} from "./pages/GroupedBarChart/GropedBarChart";
 
 export const App = () => (
-    <BrowserRouter>
+    <HashRouter>
         <nav>
             <ul>
                 <li>
@@ -20,5 +20,5 @@ export const App = () => (
             <Route path="/" element={<BasicChart />} />
             <Route path="/grouped-chart" element={<GropedBarChart />} />
         </Routes>
-    </BrowserRouter>
+    </HashRouter>
 )
