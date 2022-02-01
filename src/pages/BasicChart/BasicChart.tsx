@@ -51,6 +51,6 @@ export const BasicChart = () => {
                 .attr('y', d => yScale(d.keyValue) - margin.top)
 
         }
-    }, [selection])
+    }, [selection, xAxis, xScale, yAxis, yScale])
     return <div ref={ref}></div>
 }

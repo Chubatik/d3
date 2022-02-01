@@ -63,6 +63,6 @@ export const GropedBarChart = () => {
                 .attr('height', d => measurements.height - y(d.keyValue))
                 .attr('fill', d => colors(d.brand) as string)
         }
-    }, [selection])
+    }, [selection, x0, x1, xAxis, y, yAxis])
     return <div ref={ref}></div>
 }
