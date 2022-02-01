@@ -22,7 +22,7 @@ jobs:
             git config user.name "${CIRCLE_PROJECT_USERNAME}"
       - add_ssh_keys:
           fingerprints:
-            - "ea:74:02:81:3e:9e:99:d7:1d:c3:07:f8:33:fe:c3:b9"
+            - "68:f3:a3:4e:05:7d:f8:d5:86:e6:88:3c:ab:cc:b5:b8"
       - run: npm run deploy
 
 workflows:
