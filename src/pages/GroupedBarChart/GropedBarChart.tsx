@@ -3,9 +3,9 @@ import './GroupedBarChart.css'
 import { select, Selection } from 'd3-selection'
 import {scaleLinear, scaleBand} from 'd3-scale'
 import { axisLeft, axisBottom } from 'd3-axis'
-import { dataSet} from "../../data/data";
-import {margin, measurements} from "../../constants";
-import {brandNames, categories, colors} from "../../utils";
+import { dataSet} from '../../data/data';
+import {margin, measurements} from '../../constants';
+import {brandNames, categories, colors} from '../../utils';
 
 export const GropedBarChart = () => {
     const ref = useRef<HTMLDivElement | null>(null)
@@ -62,6 +62,25 @@ export const GropedBarChart = () => {
                 .attr('y', d =>y(d.keyValue))
                 .attr('height', d => measurements.height - y(d.keyValue))
                 .attr('fill', d => colors(d.brand) as string)
+
+            const legend = svg.selectAll('.legend').data(dataSet[0].values.map(d => d.brand).reverse())
+                .enter().append('g')
+                .attr('class', 'legend')
+                .attr('transform', (_,i) => `translate(0,${i * 20})`)
+                .style('opacity','1')
+
+            legend.append('rect')
+                .attr('x', measurements.width - 18)
+                .attr('width', 18)
+                .attr('height', 18)
+                .style('fill', d => colors(d) as string)
+
+            legend.append('text')
+                .attr('x', measurements.width - 24)
+                .attr('y', 9)
+                .attr('dy', '.35em')
+                .style('text-anchor', 'end')
+                .text(d => d)
         }
     }, [selection, x0, x1, xAxis, y, yAxis])
     return <div ref={ref}></div>
